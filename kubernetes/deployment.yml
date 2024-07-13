@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-github-actions-demo
+  labels:
+    app: aks-github-actions-demo
+spec:
+  selector:
+    matchLabels:
+      app: aks-github-actions-demo
+  template:
+    metadata:
+      labels:
+        app: aks-github-actions-demo
+    spec:
+      containers:
+      - name: aks-github-actions-demo
+        image: donhadley/pipelinesdotnetcoredocker:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
